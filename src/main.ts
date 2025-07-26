@@ -6,10 +6,11 @@ async function bootstrap() {
 
   // ✅ Enable CORS
   app.enableCors({
-    origin: 'http://localhost:4200', // Your Angular frontend
+    origin: true, // Allow all origins for now, you can restrict this later
     credentials: true, // if using cookies
   });
 
-  await app.listen(3000);
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
 }
 bootstrap();
