@@ -59,6 +59,37 @@ $ npm run test:cov
 
 ## Deployment
 
+### Railway Deployment
+
+This project is configured for deployment on Railway. Follow these steps:
+
+#### 1. Database Setup
+1. Go to your Railway project dashboard
+2. Click **"New"** → **"Database"** → **"Add MySQL"**
+3. Railway will create a MySQL database and provide connection details
+
+#### 2. Environment Variables
+Set these environment variables in your Railway app service:
+
+```
+DB_HOST=your-mysql-host-from-railway
+DB_PORT=3306
+DB_USERNAME=your-mysql-username-from-railway
+DB_PASSWORD=your-mysql-password-from-railway
+DB_DATABASE=your-mysql-database-name-from-railway
+NODE_ENV=production
+```
+
+#### 3. Deploy
+1. Push your code to GitHub
+2. Connect your GitHub repo to Railway
+3. Railway will automatically deploy your app
+
+#### 4. Get Your Backend URL
+Once deployed, Railway will provide a public URL (e.g., `https://your-app.up.railway.app`) that you can use as your backend API base URL in your frontend.
+
+### Other Deployment Options
+
 When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
 
 If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:

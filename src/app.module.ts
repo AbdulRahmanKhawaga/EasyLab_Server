@@ -10,13 +10,14 @@ import { PatientModule } from './patient/patient.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
-      database: 'lis_ai_db',
+      host: process.env.DB_HOST || 'localhost',
+      port: parseInt(process.env.DB_PORT || '3306'),
+      username: process.env.DB_USERNAME || 'root',
+      password: process.env.DB_PASSWORD || '',
+      database: process.env.DB_DATABASE || 'lis_ai_db',
       entities: [User, Patient], // ✅ Add all used entities
-      synchronize: true,
+      synchronize: process.env.NODE_ENV !== 'production', // Only sync in development
+      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
     }),
     UserModule,
     AuthModule,
